@@ -7,6 +7,6 @@ public class testing {
 	//hello
 	//testing this shit
 	
-	//hii
-	//kjdgkjdhgkjdfkjghdkfgkjdhfg
+    /// Scott was here to be awesome
 }
+
