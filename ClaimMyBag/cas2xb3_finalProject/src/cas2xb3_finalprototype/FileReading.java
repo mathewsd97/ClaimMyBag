@@ -1,6 +1,9 @@
 package cas2xb3_finalprototype;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
@@ -40,7 +43,7 @@ public class FileReading {
 			// segment the contents of the Luggage.
 			String[] splitting = strLine.split("\t", -1);
 			
-			System.out.println(splitting[1]);
+			//System.out.println(splitting[1]);
 			int month = 0;
 			
 			
@@ -239,12 +242,25 @@ public class FileReading {
 		 * Reading connecting airports 
 		 */
 		
-		BufferedReader connectingairports = new BufferedReader(new InputStreamReader(new FileInputStream("ConnectingAirport.txt")));
-		
-		
-		while(connectingairports.){
-			
+		Scanner connectedairports = new Scanner(new File("ConnectingAirports.txt"));
+		//System.out.println("hi");
+		String parts = null;
+		ArrayList<String> airportFrom = new ArrayList<String>();
+		ArrayList<String> airportFromCities = new ArrayList<String>();
+		ArrayList<String> airportTo = new ArrayList<String>();
+		ArrayList<String> airportToCities = new ArrayList<String>();
+		connectedairports.nextLine();
+		while(connectedairports.hasNext()){
+			parts = connectedairports.nextLine();
+			String[] spilt = parts.split("\t");
+			airportFrom.add(spilt[4]);
+			airportFromCities.add(spilt[5]);
+			airportTo.add(spilt[9]);
+			airportToCities.add(spilt[10]);
+			//System.out.println(Arrays.toString(airportFrom.toArray()));
 		}
+		System.out.println(Arrays.toString(airportFrom.toArray()));
+		
 	}
 
 }
