@@ -1,9 +1,9 @@
 package cas2xb3_finalprototype;
 
-public class Merge {
+public class MergeSort {
 
     // This class should not be instantiated.
-    private Merge() { }
+    private MergeSort() { }
     
     private static String claimNumber(LuggageT a){
     	String claim = new String();
