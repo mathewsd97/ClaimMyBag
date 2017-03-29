@@ -234,6 +234,12 @@ public class FileReading {
 		
 		//Close the input stream
 		br.close();
+		
+		/**
+		 * Reading connecting airports 
+		 */
+		
+		BufferedReader connectingairports = new BufferedReader(new InputStreamReader(new FileInputStream("ConnectingAirport.txt")));
 	}
 
 }
