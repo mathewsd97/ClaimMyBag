@@ -6,8 +6,6 @@ public class testing {
 	
 	//hello
 	//testing this shit
-	
-	//hello hello
-	//fdkghdfkjhgkjdhgkdfh
+	///OH MY LORD
 }
 

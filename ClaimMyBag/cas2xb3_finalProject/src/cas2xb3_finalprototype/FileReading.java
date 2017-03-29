@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-
 /**
  * The purpose of this class is to be able to read from a text file that is directly
  * correlating with a dataset that was retrieved as an Excel file.
@@ -16,16 +15,16 @@ import java.io.InputStreamReader;
  *
  */
 public class FileReading {
-
-	public static void main(String[] args) throws Exception {
+	
+	public static ArrayList<LuggageT> totalLuggage;
+	public static ArrayList<LuggageT> luggage() throws Exception {
 		// TODO Auto-generated method stub
 		
 		
-		ArrayList<LuggageT> totalLuggage = new ArrayList<LuggageT>();
+		totalLuggage = new ArrayList<LuggageT>();
 		
 		FileInputStream fstream = new FileInputStream("claims-2002-2006_0.txt");
 		BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
-
 		String strLine;
 		
 		//This ensures that the headers are not included inside of a LuggageT object.
@@ -39,8 +38,6 @@ public class FileReading {
 			// This splits the line by the tab characters in order to properly
 			// segment the contents of the Luggage.
 			String[] splitting = strLine.split("\t", -1);
-			
-			System.out.println(splitting[1]);
 			int month = 0;
 			
 			
@@ -131,7 +128,6 @@ public class FileReading {
 					splitting[4], splitting[5], splitting[6], splitting[7]));
 			count++;
 		}
-
 		//This is the portion where the luggage is sorted out by the month 
 		//and that the new, appropriate airport and airline vertices
 		//are created. 
@@ -234,6 +230,6 @@ public class FileReading {
 		
 		//Close the input stream
 		br.close();
+		return totalLuggage;
 	}
-
 }
