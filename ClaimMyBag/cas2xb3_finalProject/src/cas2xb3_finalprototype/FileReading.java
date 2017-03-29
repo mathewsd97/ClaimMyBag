@@ -240,6 +240,11 @@ public class FileReading {
 		 */
 		
 		BufferedReader connectingairports = new BufferedReader(new InputStreamReader(new FileInputStream("ConnectingAirport.txt")));
+		
+		
+		while(connectingairports.){
+			
+		}
 	}
 
 }
