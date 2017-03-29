@@ -1,8 +1,8 @@
 package cas2xb3_finalprototype;
 
-public class Quick {
+public class QuickSort {
 	
-	private Quick() { }
+	private QuickSort() { }
 
     /**
      * Rearranges the array in ascending order, using the natural order.
