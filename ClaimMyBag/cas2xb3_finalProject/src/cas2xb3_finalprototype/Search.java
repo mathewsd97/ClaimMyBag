@@ -35,19 +35,19 @@ public static int rank(String key, ArrayList<LuggageT> a) {
     return indexOf(a, key);
 }
 
-public static void main(String[] args) throws Exception {
-
-	ArrayList<LuggageT> input = new ArrayList<LuggageT>();
-    FileReading a = new FileReading();
- 	input = a.luggage();
- 	Merge test = new Merge(input);
-    test.sort();
-    
-    Scanner keyboard = new Scanner(System.in);
-    System.out.print("Input your claim number: ");
-    String claim = keyboard.next();
-
-    System.out.println(input.get(Search.indexOf(input, claim)).getAirlineName());
-    }
+//public static void main(String[] args) throws Exception {
+//
+//	ArrayList<LuggageT> input = new ArrayList<LuggageT>();
+//    FileReading a = new FileReading();
+// 	input = a.luggage();
+// 	Merge test = new Merge(input);
+//    test.sort();
+//    
+//    Scanner keyboard = new Scanner(System.in);
+//    System.out.print("Input your claim number: ");
+//    String claim = keyboard.next();
+//
+//    System.out.println(input.get(Search.indexOf(input, claim)).getAirlineName());
+//    }
 }
 
