@@ -1,163 +1,96 @@
 package cas2xb3_finalprototype;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Merge {
-
-    // This class should not be instantiated.
-    private Merge() { }
-    
-    private static String claimNumber(LuggageT a){
-    	String claim = new String();
-    	claim = a.getClaimNumber();
-    	return claim;
+ 
+    private ArrayList<LuggageT> strList;
+ 
+    // Constructor
+    public Merge(ArrayList<LuggageT> input) {
+        strList = input;
     }
-
-    // stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
-    private static void merge(LuggageT[] a, LuggageT[] aux, int lo, int mid, int hi) {
-        // precondition: a[lo .. mid] and a[mid+1 .. hi] are sorted subarrays
-        assert isSorted(a, lo, mid);
-        assert isSorted(a, mid+1, hi);
-
-        // copy to aux[]
-        for (int k = lo; k <= hi; k++) {
-            aux[k] = a[k]; 
+     
+    public void sort() {
+        strList = mergeSort(strList);
+    }
+ 
+    public ArrayList<LuggageT> mergeSort(ArrayList<LuggageT> whole) {
+        ArrayList<LuggageT> left = new ArrayList<LuggageT>();
+        ArrayList<LuggageT> right = new ArrayList<LuggageT>();
+        int center;
+ 
+        if (whole.size() == 1) {    
+            return whole;
+        } else {
+            center = whole.size()/2;
+            // copy the left half of whole into the left.
+            for (int i=0; i<center; i++) {
+                    left.add(whole.get(i));
+            }
+ 
+            //copy the right half of whole into the new arraylist.
+            for (int i=center; i<whole.size(); i++) {
+                    right.add(whole.get(i));
+            }
+ 
+            // Sort the left and right halves of the arraylist.
+            left  = mergeSort(left);
+            right = mergeSort(right);
+ 
+            // Merge the results back together.
+            merge(left, right, whole);
         }
-
-        // merge back to a[]
-        int i = lo, j = mid+1;
-        String claim1 = new String();;
-        for (int k = lo; k <= hi; k++) {
-        	claim1 = claimNumber(aux[j]);
-        	String claim2 = aux[i].getClaimNumber();
-            if      (i > mid)              a[k] = aux[j++];
-            else if (j > hi)               a[k] = aux[i++];
-            else if (less(claim1, claim2)) a[k] = aux[j++];
-            else                           a[k] = aux[i++];
+        return whole;
+    }
+ 
+    private void merge(ArrayList<LuggageT> left, ArrayList<LuggageT> right, ArrayList<LuggageT> whole) {
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int wholeIndex = 0;
+ 
+        while (leftIndex < left.size() && rightIndex < right.size()) {
+            if ( (left.get(leftIndex).getClaimNumber().compareTo(right.get(rightIndex).getClaimNumber())) < 0) {
+                whole.set(wholeIndex, left.get(leftIndex));
+                leftIndex++;
+            } else {
+                whole.set(wholeIndex, right.get(rightIndex));
+                rightIndex++;
+            }
+            wholeIndex++;
         }
-
-        // postcondition: a[lo .. hi] is sorted
-        assert isSorted(a, lo, hi);
-    }
-
-    // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
-    private static void sort(LuggageT[] a, LuggageT[] aux, int lo, int hi) {
-        if (hi <= lo) return;
-        int mid = lo + (hi - lo) / 2;
-        sort(a, aux, lo, mid);
-        sort(a, aux, mid + 1, hi);
-        merge(a, aux, lo, mid, hi);
-    }
-
-    /**
-     * Rearranges the array in ascending order, using the natural order.
-     * @param a the array to be sorted
-     */
-    public static void sort(LuggageT[] a) {
-        LuggageT[] aux = new LuggageT[a.length];
-        sort(a, aux, 0, a.length-1);
-        assert isSorted(a);
-    }
-
-
-   /***************************************************************************
-    *  Helper sorting function.
-    ***************************************************************************/
-    
-    // is v < w ?
-    private static boolean less(String v, String w) {
-        return v.compareTo(w) < 0;
-    }
-        
-   /***************************************************************************
-    *  Check if array is sorted - useful for debugging.
-    ***************************************************************************/
-    private static boolean isSorted(LuggageT[] a) {
-        return isSorted(a, 0, a.length - 1);
-    }
-
-    private static boolean isSorted(LuggageT[] a, int lo, int hi) {
-    	String claim1 = new String();
-    	String claim2 = new String();
-    	int j = lo + 1;
-        for (int i = lo + 1; i <= hi; i++)
-        	claim1 = a[i].getClaimNumber();
-        	claim2 = a[j-1].getClaimNumber();
-        	j++;
-            if (less(claim1, claim2)) return false;
-        return true;
-    }
-
-
-   /***************************************************************************
-    *  Index mergesort.
-    ***************************************************************************/
-    // stably merge a[lo .. mid] with a[mid+1 .. hi] using aux[lo .. hi]
-    private static void merge(LuggageT[] a, int[] index, int[] aux, int lo, int mid, int hi) {
-
-        // copy to aux[]
-        for (int k = lo; k <= hi; k++) {
-            aux[k] = index[k]; 
+ 
+        ArrayList<LuggageT> rest;
+        int restIndex;
+        if (leftIndex >= left.size()) {
+            rest = right;
+            restIndex = rightIndex;
+        } else {
+            rest = left;
+            restIndex = leftIndex;
         }
-
-        // merge back to a[]
-        int i = lo, j = mid+1;
-        String claim1 = new String();
-        String claim2 = new String();
-        for (int k = lo; k <= hi; k++) {
-        	claim1 = a[aux[j]].getClaimNumber();
-        	claim2 = a[aux[i]].getClaimNumber();
-            if      (i > mid)                    index[k] = aux[j++];
-            else if (j > hi)                     index[k] = aux[i++];
-            else if (less(claim1, claim2)) index[k] = aux[j++];
-            else                                 index[k] = aux[i++];
+ 
+        // Copy the rest of whichever ArrayList (left or right) was not used up.
+        for (int i=restIndex; i<rest.size(); i++) {
+            whole.set(wholeIndex, rest.get(i));
+            wholeIndex++;
         }
     }
-
-    /**
-     * Returns a permutation that gives the elements in the array in ascending order.
-     * @param a the array
-     * @return a permutation {@code p[]} such that {@code a[p[0]]}, {@code a[p[1]]},
-     *    ..., {@code a[p[N-1]]} are in ascending order
-     */
-    public static int[] indexSort(LuggageT[] a) {
-        int n = a.length;
-        int[] index = new int[n];
-        for (int i = 0; i < n; i++)
-            index[i] = i;
-
-        int[] aux = new int[n];
-        sort(a, index, aux, 0, n-1);
-        return index;
-    }
-
-    // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
-    private static void sort(LuggageT[] a, int[] index, int[] aux, int lo, int hi) {
-        if (hi <= lo) return;
-        int mid = lo + (hi - lo) / 2;
-        sort(a, index, aux, lo, mid);
-        sort(a, index, aux, mid + 1, hi);
-        merge(a, index, aux, lo, mid, hi);
-    }
-
-    // print array to standard output
-    private static void show(LuggageT[] a) {
-        for (int i = 0; i < a.length; i++) {
-            StdOut.println(a[i]);
+ 
+    public void show() {
+        System.out.println("Sorted:");
+        for (int i=0; i< strList.size();i++) {
+            System.out.println(strList.get(i));
         }
     }
-
-    /**
-     * Reads in a sequence of strings from standard input; mergesorts them; 
-     * and prints them to standard output in ascending order. 
-     *
-     * @param args the command-line arguments
-     * @throws Exception 
-     */
+ 
     public static void main(String[] args) throws Exception {
-    	LuggageT[] b = new LuggageT[1000000];
-    	FileReading a = new FileReading();
-    	b = a.luggage();
-        Merge.sort(b);
-        System.out.println(b[0].getClaimNumber());
-        
+        ArrayList<LuggageT> input = new ArrayList<LuggageT>();
+        FileReading a = new FileReading();
+    	input = a.luggage();
+        Merge test = new Merge(input);
+        test.sort();
+        System.out.println(input.get(0).getClaimNumber());
     }
 }
