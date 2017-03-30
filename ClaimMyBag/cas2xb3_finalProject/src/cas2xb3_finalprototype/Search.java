@@ -13,7 +13,7 @@ private Search() { }
  * Returns the index of the specified key in the specified array.
  *
  */
-public static int indexOf(ArrayList<LuggageT> a, String key) {
+public static int indexOf(ArrayList<LuggageT> a,Comparable key) {
     int lo = 0;
     int hi = a.size() - 1;
     while (lo <= hi) {

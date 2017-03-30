@@ -108,7 +108,7 @@ public class OurApplication {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String airline = lblNewLabel.getText();
-				int ClaimNumber = Double.parseDouble(lblNewLabel_1.getText());
+				int ClaimNumber = Integer.parseInt(lblNewLabel_1.getText());
 	//			String incidentDate = lblNewLabel_2.getText();
 		//		String ClaimType = lblNewLabel_3.getText();
 //				String item = lblNewLabel_4.getText();
