@@ -77,10 +77,7 @@ public class Edge implements Comparable<Edge> {
 	}
 	
 	 public static void main(String[] args) {
-		 AirportVertex Chicago = new AirportVertex("Chicago", 0);
-		 AirlineVertex United = new AirlineVertex("United", 0);
-	        Edge e = new Edge(Chicago, United, 7);
-	        System.out.println(e.toString());
+		
 	    }
 
 }

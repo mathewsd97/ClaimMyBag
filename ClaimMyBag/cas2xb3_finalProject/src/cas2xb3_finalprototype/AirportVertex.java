@@ -4,14 +4,19 @@ public class AirportVertex implements Comparable<AirportVertex> {
 
 	public String name; 	// label for vertex
 	public int uid; 		// unique identifier for vertex (index)
-
-	public AirportVertex(String v, int i) {
+	public String airportCode;
+	public AirportVertex(String v, String code, int i) {
 		name = v;
 		uid = i;
+		airportCode = code;
 	}
 
 	public int getID(){
 		return this.uid;
+	}
+	
+	public String getAirportCode(){
+		return this.airportCode;
 	}
 	
 	public String toString() {

@@ -10,7 +10,7 @@ public class AirportGraph {
 
     private final int V;
     private int E;
-    private Bag<AirportVertex>[] adj;
+    private Bag<AirportEdge>[] adj;
     
     /**
      * Initializes an empty graph with {@code V} vertices and 0 edges.
@@ -23,9 +23,9 @@ public class AirportGraph {
         if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
         this.V = V;
         this.E = 0;
-        adj = (Bag<AirportVertex>[]) new Bag[V];
+        adj = (Bag<AirportEdge>[]) new Bag[V];
         for (int v = 0; v < V; v++) {
-            adj[v] = new Bag<AirportVertex>();
+            adj[v] = new Bag<AirportEdge>();
         }
     }
 
@@ -133,12 +133,9 @@ public class AirportGraph {
      * @param  w the other vertex in the edge
      * @throws IllegalArgumentException unless both {@code 0 <= v < V} and {@code 0 <= w < V}
      */
-    public void addEdge(AirportVertex v, AirportVertex w) {
-        validateVertex(v);
-        validateVertex(w);
+    public void addEdge(AirportEdge e) {
+        adj[e.from()].add(e);
         E++;
-        adj[v.uid].add(w);
-        adj[w.uid].add(v);
     }
 
 
@@ -149,9 +146,8 @@ public class AirportGraph {
      * @return the vertices adjacent to vertex {@code v}, as an iterable
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
-    public Iterable<AirportVertex> adj(AirportVertex v) {
-        validateVertex(v);
-        return adj[v.uid];
+    public Iterable<AirportEdge> adj(int v) {
+        return adj[v];
     }
 
     /**
@@ -195,8 +191,11 @@ public class AirportGraph {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        In in = new In(args[0]);
-        Graph G = new Graph(in);
-        StdOut.println(G);
+       
     }
 }
+
+
+
+
+

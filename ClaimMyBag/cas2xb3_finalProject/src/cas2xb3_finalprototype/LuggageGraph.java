@@ -67,13 +67,31 @@ public class LuggageGraph {
 		}
 		else{
 			airportAdj[v][w].increaseWeight();
-			airlineAdj[v][w].increaseWeight();
+			airlineAdj[w][v].increaseWeight();
 		}
 	}
 	
 	
-	public int ranking (AirlineVertex airline){
-		return 0;
+	
+	public double ratio(int i){
+		int totalWeight = 0;
+		int totalAirlines = 0;
+		
+		for (int j = 0; j < airportAdj[i].length; j ++){
+			if (airportAdj[i][j] != null){
+				totalWeight += airportAdj[i][j].weight();
+				totalAirlines++;
+			}
+		}
+		
+		double ratio = 0;
+		if (totalAirlines == 0){
+			return ratio;
+		}
+		else{
+			ratio = totalWeight / totalAirlines * 1.0;
+		}
+		return ratio;
 	}
 	/**
 	public Iterable<Edge> airportAdj(int v) {
