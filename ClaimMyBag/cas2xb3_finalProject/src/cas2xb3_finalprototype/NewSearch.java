@@ -10,15 +10,19 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.AbstractAction;
+import java.awt.event.ActionEvent;
+import javax.swing.Action;
+import java.awt.event.ActionListener;
 
 public class NewSearch extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtEnterAirline;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	//private final Action action = new SwingAction();
+	private int results;
+	private String statement;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -41,7 +45,7 @@ public class NewSearch extends JFrame {
 	 */
 	public NewSearch() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 420, 460);
+		setBounds(100, 100, 420, 316);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -52,57 +56,56 @@ public class NewSearch extends JFrame {
 		lblNewSearch.setBounds(136, 11, 133, 39);
 		contentPane.add(lblNewSearch);
 		
-		JLabel lblAirline = new JLabel("Airline");
-		lblAirline.setBounds(46, 71, 29, 14);
-		contentPane.add(lblAirline);
-		
 		JLabel lblNewLabel = new JLabel("Claim Number");
-		lblNewLabel.setBounds(10, 124, 65, 14);
+		lblNewLabel.setBounds(25, 84, 65, 14);
 		contentPane.add(lblNewLabel);
-		
-		JLabel lblIncidentDate = new JLabel("Incident Date");
-		lblIncidentDate.setBounds(10, 169, 65, 14);
-		contentPane.add(lblIncidentDate);
-		
-		JLabel lblClaimType = new JLabel("Claim Type");
-		lblClaimType.setBounds(23, 221, 52, 14);
-		contentPane.add(lblClaimType);
-		
-		JLabel lblItem = new JLabel("Item");
-		lblItem.setBounds(53, 275, 22, 14);
-		contentPane.add(lblItem);
-		
-		txtEnterAirline = new JTextField();
-		txtEnterAirline.setBounds(113, 68, 230, 20);
-		contentPane.add(txtEnterAirline);
-		txtEnterAirline.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(113, 121, 230, 20);
+		textField_1.setBounds(127, 81, 230, 20);
 		contentPane.add(textField_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(113, 166, 230, 20);
-		contentPane.add(textField_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(113, 218, 230, 20);
-		contentPane.add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(113, 272, 230, 20);
-		contentPane.add(textField_4);
-		
-		JButton btnNewButton = new JButton("Enter");
-		btnNewButton.setBounds(101, 349, 181, 61);
+		JButton btnNewButton = new JButton("Button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String airline = lblNewLabel.getText();
+				int ClaimNumber = Integer.parseInt(lblNewLabel.getText());
+				results = Search.indexOf(FileReading.totalLuggage, ClaimNumber);
+				if(Search.indexOf(FileReading.totalLuggage, ClaimNumber) == -1 ){
+					statement = "Luggage not found.";
+					textField.setText(statement);
+				}else{
+					statement = "Luggage Found.";
+					textField.setText(statement);
+				}
+				}
+		});
+		//btnNewButton.setAction(action);
+		btnNewButton.setBounds(191, 132, 153, 49);
 		contentPane.add(btnNewButton);
 		
+
 		JButton btnHome = new JButton("Home");
-		btnHome.setBounds(329, 10, 65, 49);
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnHome.setBounds(51, 132, 133, 49);
 		contentPane.add(btnHome);
+		
+		textField = new JTextField();
+		textField.setBounds(51, 209, 293, 49);
+		contentPane.add(textField);
+		textField.setColumns(10);
+
 	}
+//	private class SwingAction extends AbstractAction {
+//		public SwingAction() {
+//			putValue(NAME, "SwingAction");
+//			putValue(SHORT_DESCRIPTION, "Some short description");
+//		}
+//		public void actionPerformed(ActionEvent e) {
+//		}
+//	}
 }
