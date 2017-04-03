@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 public class NewSearch extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel rateroute;
 	private JTextField textField_1;
 	//private final Action action = new SwingAction();
 	private int results;
@@ -45,7 +46,7 @@ public class NewSearch extends JFrame {
 	 */
 	public NewSearch() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 431, 380);
+		setBounds(100, 100, 488, 390);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -57,12 +58,12 @@ public class NewSearch extends JFrame {
 		contentPane.add(lblNewSearch);
 		
 		JLabel lblNewLabel = new JLabel("Claim Number");
-		lblNewLabel.setBounds(25, 84, 65, 14);
+		lblNewLabel.setBounds(25, 84, 124, 14);
 		contentPane.add(lblNewLabel);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(127, 81, 230, 20);
+		textField_1.setBounds(146, 78, 230, 26);
 		contentPane.add(textField_1);
 		
 		JButton btnNewButton = new JButton("Enter");
@@ -87,26 +88,29 @@ public class NewSearch extends JFrame {
 				}
 		});
 		//btnNewButton.setAction(action);
-		btnNewButton.setBounds(191, 132, 153, 49);
+		btnNewButton.setBounds(223, 126, 153, 49);
 		contentPane.add(btnNewButton);
 		
 
-		JButton btnHome = new JButton("Home");
+		JButton btnHome = new JButton("Rate My Route");
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				RateMyRoute rate = new RateMyRoute();
+				rate.setVisible(true);
+				contentPane.setVisible(false);
+				
 			}
 		});
-		btnHome.setBounds(51, 132, 133, 49);
+		btnHome.setBounds(83, 126, 133, 49);
 		contentPane.add(btnHome);
 		
 		textField = new JTextField();
-		textField.setBounds(51, 259, 293, 49);
+		textField.setBounds(83, 234, 293, 49);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblResults = new JLabel("Results:");
-		lblResults.setBounds(51, 237, 69, 20);
+		lblResults.setBounds(83, 212, 69, 20);
 		contentPane.add(lblResults);
 
 	}
