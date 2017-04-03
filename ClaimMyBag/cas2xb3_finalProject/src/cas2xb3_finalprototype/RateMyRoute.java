@@ -38,7 +38,7 @@ public class RateMyRoute extends JFrame {
 	 */
 	public RateMyRoute() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 420, 460);
+		setBounds(100, 100, 420, 297);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -68,11 +68,11 @@ public class RateMyRoute extends JFrame {
 		contentPane.add(textField_1);
 		
 		JButton btnEnter = new JButton("Enter");
-		btnEnter.setBounds(108, 188, 170, 53);
+		btnEnter.setBounds(214, 177, 146, 53);
 		contentPane.add(btnEnter);
 		
 		JButton button = new JButton("Home");
-		button.setBounds(329, 4, 65, 49);
+		button.setBounds(58, 177, 146, 53);
 		contentPane.add(button);
 	}
 
