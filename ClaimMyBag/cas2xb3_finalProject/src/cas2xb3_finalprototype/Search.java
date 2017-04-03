@@ -13,7 +13,7 @@ private Search() { }
  * Returns the index of the specified key in the specified array.
  *
  */
-public static int indexOf(ArrayList<LuggageT> a, Comparable key) {
+public static int indexOf(ArrayList<LuggageT> a, String key) {
     int lo = 0;
     int hi = a.size() - 1;
     while (lo <= hi) {
@@ -31,19 +31,19 @@ public static int indexOf(ArrayList<LuggageT> a, Comparable key) {
  *
  */
 @Deprecated
-public static int rank(Comparable key, ArrayList<LuggageT> a) {
+public static int rank(String key, ArrayList<LuggageT> a) {
     return indexOf(a, key);
 }
 
-public static void main(String[] args) throws Exception{
-	Search test = new Search();
-	FileReading f = new FileReading();
-	ArrayList<LuggageT> list = new ArrayList<LuggageT>();
-	list = f.luggage();
-	MergeSort sort= new MergeSort(list);
-	System.out.println(test.indexOf(list,"0909802M"));
+public LuggageT getLuggage(String claim){
+	ArrayList<LuggageT> input = new ArrayList<LuggageT>();
+    FileReading a = new FileReading();
+ 	input = a.luggage();
+ 	Merge test = new Merge(input);
+    test.sort();
+    String claimNumber = claim;
+    return input.get(Search.indexOf(input, claim));
 }
-
 
 }
 
