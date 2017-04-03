@@ -45,7 +45,7 @@ public class NewSearch extends JFrame {
 	 */
 	public NewSearch() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 420, 316);
+		setBounds(100, 100, 431, 380);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -65,11 +65,17 @@ public class NewSearch extends JFrame {
 		textField_1.setBounds(127, 81, 230, 20);
 		contentPane.add(textField_1);
 		
-		JButton btnNewButton = new JButton("Button");
+		JButton btnNewButton = new JButton("Enter");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String airline = lblNewLabel.getText();
-				int ClaimNumber = Integer.parseInt(lblNewLabel.getText());
+				try {
+					FileReading.luggage();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//String airline = lblNewLabel.getText();
+				String ClaimNumber = lblNewLabel.getText();
 				results = Search.indexOf(FileReading.totalLuggage, ClaimNumber);
 				if(Search.indexOf(FileReading.totalLuggage, ClaimNumber) == -1 ){
 					statement = "Luggage not found.";
@@ -95,17 +101,21 @@ public class NewSearch extends JFrame {
 		contentPane.add(btnHome);
 		
 		textField = new JTextField();
-		textField.setBounds(51, 209, 293, 49);
+		textField.setBounds(51, 259, 293, 49);
 		contentPane.add(textField);
 		textField.setColumns(10);
+		
+		JLabel lblResults = new JLabel("Results:");
+		lblResults.setBounds(51, 237, 69, 20);
+		contentPane.add(lblResults);
 
 	}
-//	private class SwingAction extends AbstractAction {
-//		public SwingAction() {
-//			putValue(NAME, "SwingAction");
-//			putValue(SHORT_DESCRIPTION, "Some short description");
-//		}
-//		public void actionPerformed(ActionEvent e) {
-//		}
-//	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
 }
