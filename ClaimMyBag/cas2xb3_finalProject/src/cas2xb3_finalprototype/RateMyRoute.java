@@ -11,7 +11,9 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollBar;
 
 public class RateMyRoute extends JFrame {
 
@@ -19,6 +21,7 @@ public class RateMyRoute extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -74,15 +77,35 @@ public class RateMyRoute extends JFrame {
 		lblMonth.setBounds(40, 179, 69, 20);
 		contentPane.add(lblMonth);
 		
+		textField_2 = new JTextField();
+		textField_2.setBounds(120, 176, 211, 26);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(29, 333, 371, 254);
+		contentPane.add(textField_3);
+		textField_3.setColumns(10);
+		
 		JButton btnEnter = new JButton("Enter");
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String Start = lblStart.getText();
-				String End = lblArrival.getText();
-				int Month = Integer.parseInt(lblMonth.getText());
+				String Start = textField.getText();
+				String End = textField_1.getText();
+				int Month = Integer.parseInt(textField_2.getText());
 				
-				ArrayList<String> Finalreault = RateMyRouteFinal.totalOutput(Start, End, Month);
 				
+				try {
+					ArrayList<String> Finalresult = RateMyRouteFinal.totalOutput(Start, End, Month);
+					String output = "";
+					for (String out : Finalresult){
+						output = output + "  " + out;
+					}
+					textField_3.setText(output);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				
 			}
@@ -96,9 +119,6 @@ public class RateMyRoute extends JFrame {
 		
 
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(120, 176, 211, 26);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+
 	}
 }
