@@ -31,7 +31,7 @@ public static int indexOf(ArrayList<LuggageT> a, Comparable key) {
  *
  */
 @Deprecated
-public static int rank(String key, ArrayList<LuggageT> a) {
+public static int rank(Comparable key, ArrayList<LuggageT> a) {
     return indexOf(a, key);
 }
 
