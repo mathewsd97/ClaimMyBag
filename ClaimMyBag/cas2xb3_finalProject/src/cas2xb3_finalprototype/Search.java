@@ -35,6 +35,15 @@ public static int rank(Comparable key, ArrayList<LuggageT> a) {
     return indexOf(a, key);
 }
 
+public static void main(String[] args) throws Exception{
+	Search test = new Search();
+	FileReading f = new FileReading();
+	ArrayList<LuggageT> list = new ArrayList<LuggageT>();
+	list = f.luggage();
+	MergeSort sort= new MergeSort(list);
+	System.out.println(test.indexOf(list,"0909802M"));
+}
+
 
 }
 
