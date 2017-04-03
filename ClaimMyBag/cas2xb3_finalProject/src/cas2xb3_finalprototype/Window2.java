@@ -3,6 +3,10 @@ package cas2xb3_finalprototype;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import javax.swing.BoxLayout;
 
 public class Window2 {
 
@@ -38,6 +42,11 @@ public class Window2 {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(15, 16, 69, 20);
+		frame.getContentPane().add(lblNewLabel);
 	}
 
 }
