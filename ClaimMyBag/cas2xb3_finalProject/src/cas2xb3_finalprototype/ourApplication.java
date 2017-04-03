@@ -80,14 +80,14 @@ public class ourApplication {
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 		
+		JLabel lblNewLabel_3 = new JLabel("Claim Type");
+		lblNewLabel_3.setBounds(30, 238, 115, 20);
+		frame.getContentPane().add(lblNewLabel_3);
+		
 		textField_3 = new JTextField();
 		textField_3.setBounds(138, 235, 146, 26);
 		frame.getContentPane().add(textField_3);
 		textField_3.setColumns(10);
-		
-		JLabel lblNewLabel_3 = new JLabel("Claim Type");
-		lblNewLabel_3.setBounds(30, 238, 115, 20);
-		frame.getContentPane().add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Item");
 		lblNewLabel_4.setBounds(76, 295, 69, 20);
@@ -98,11 +98,11 @@ public class ourApplication {
 		frame.getContentPane().add(textField_4);
 		textField_4.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("New label");
+		JLabel lblNewLabel_5 = new JLabel("Enter Details");
 		lblNewLabel_5.setBounds(15, 16, 69, 20);
 		frame.getContentPane().add(lblNewLabel_5);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Enter");
 		btnNewButton.setBounds(177, 334, 115, 29);
 		frame.getContentPane().add(btnNewButton);
 	}
