@@ -1,5 +1,7 @@
 package cas2xb3_finalprototype;
 
+import edu.princeton.cs.algs4.StdOut;
+
 public class MergeSort {
 
     // This class should not be instantiated.
@@ -145,19 +147,19 @@ public class MergeSort {
         }
     }
 
-    /**
-     * Reads in a sequence of strings from standard input; mergesorts them; 
-     * and prints them to standard output in ascending order. 
-     *
-     * @param args the command-line arguments
-     * @throws Exception 
-     */
-    public static void main(String[] args) throws Exception {
-    	LuggageT[] b = new LuggageT[1000000];
-    	FileReading a = new FileReading();
-    	b = a.luggage();
-        Merge.sort(b);
-        System.out.println(b[0].getClaimNumber());
-        
-    }
+//    /**
+//     * Reads in a sequence of strings from standard input; mergesorts them; 
+//     * and prints them to standard output in ascending order. 
+//     *
+//     * @param args the command-line arguments
+//     * @throws Exception 
+//     */
+//    public static void main(String[] args) throws Exception {
+//    	LuggageT[] b = new LuggageT[1000000];
+//    	FileReading a = new FileReading();
+//    	b = a.luggage();
+//        Merge.sort(b);
+//        System.out.println(b[0].getClaimNumber());
+//        
+//    }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 public class RateMyRouteFinal {
 	
-	public ArrayList<String> totalOutput(String startingLocation, String endingLocation, int givenMonth) throws Exception{
+	public static ArrayList<String> totalOutput(String startingLocation, String endingLocation, Integer givenMonth) throws Exception{
 		//This linked hash map contains the key,value pairing of Airport Code, Location (City, State)
 				LinkedHashMap <String, String> codeToAirport = new LinkedHashMap<String, String> ();
 				

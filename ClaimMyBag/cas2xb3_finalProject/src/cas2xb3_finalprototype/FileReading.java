@@ -172,7 +172,8 @@ public class FileReading {
 			}
 			
 			if (airportVertices.size() == 0 || airportFlag == false){
-				airportVertices.add(new AirportVertex(totalLuggage.get(i).getKnownAirportName(), airportID));
+				airportVertices.add(new AirportVertex(totalLuggage.get(i).getKnownAirportName(), 
+						totalLuggage.get(i).getAirportCode(), airportID));
 				airportID ++;
 			}
 			
@@ -190,7 +191,7 @@ public class FileReading {
 		//airline or airport vertices inside of the arrayList.
 		//This is to ensure that the positioning in the graph is kept in check
 		//relating to their ID numbers. 
-		AirportVertex swagger = new AirportVertex("", 0);
+		AirportVertex swagger = new AirportVertex("", "", 0);
 		AirlineVertex swaggerOne = new AirlineVertex("", 0);
 		
 		

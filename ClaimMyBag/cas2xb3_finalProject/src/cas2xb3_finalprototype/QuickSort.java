@@ -1,5 +1,7 @@
 package cas2xb3_finalprototype;
 
+import edu.princeton.cs.algs4.*;
+
 public class QuickSort {
 	
 	private QuickSort() { }
@@ -28,7 +30,7 @@ public class QuickSort {
     private static int partition(LuggageT[] a, int lo, int hi) {
         int i = lo;
         int j = hi + 1;
-        LuggageT v = new LuggageT();;
+        LuggageT v = new LuggageT();
         v = a[lo];
         String claim1 = v.getClaimNumber();
         while (true) { 
@@ -120,22 +122,22 @@ public class QuickSort {
         }
     }
 
-    /**
-     * Reads in a sequence of strings from standard input; quicksorts them; 
-     * and prints them to standard output in ascending order. 
-     * Shuffles the array and then prints the strings again to
-     * standard output, but this time, using the select method.
-     *
-     * @param args the command-line arguments
-     */
-    
-    public static void main(String[] args) throws Exception {
-    	LuggageT[] b = new LuggageT[1000000];
-    	FileReading a = new FileReading();
-    	b = a.luggage();
-    	Quick.sort(b);
-		System.out.println(b[0]);
-	}
+//    /**
+//     * Reads in a sequence of strings from standard input; quicksorts them; 
+//     * and prints them to standard output in ascending order. 
+//     * Shuffles the array and then prints the strings again to
+//     * standard output, but this time, using the select method.
+//     *
+//     * @param args the command-line arguments
+//     */
+//    
+//    public static void main(String[] args) throws Exception {
+//    	LuggageT[] b = new LuggageT[1000000];
+//    	FileReading a = new FileReading();
+//    	b = a.luggage();
+//    	Quick.sort(b);
+//		System.out.println(b[0]);
+//	}
 }
 
 
